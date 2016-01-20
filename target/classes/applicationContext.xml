@@ -56,5 +56,21 @@
 		</aop:aspect>
 	</aop:config>
 	
+	
+	<bean id="exceptionAOP" class="com.lee.spring002.aop.xml.exception.ExceptionAOP"></bean>
+	<bean id="stuService" class="com.lee.spring002.aop.xml.exception.StuServiceImpl">
+		<property name="stuDAO" ref="stuDAO"></property>
+	</bean>
+	<bean id="stu2Service" class="com.lee.spring002.aop.xml.exception.Stu2ServiceImpl">
+		<property name="stuDAO" ref="stuDAO"></property>
+	</bean>
+	<bean id="stuDAO" class="com.lee.spring002.aop.xml.exception.StuDAOImpl"></bean>
 
+	<aop:config >
+		<aop:pointcut expression="execution(* com.lee.spring002.aop.xml.exception.*ServiceImpl.*(..))" id="performException"/>
+		<aop:aspect ref="exceptionAOP">
+			<aop:after-throwing method="catchException" throwing="content" pointcut-ref="performException"/>
+		</aop:aspect>
+	</aop:config>
+	
 </beans>
