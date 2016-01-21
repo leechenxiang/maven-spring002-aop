@@ -12,3 +12,4 @@
 *.epoch
 
 /bin/
+/test-output/
