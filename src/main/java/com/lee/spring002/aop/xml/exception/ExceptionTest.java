@@ -20,4 +20,11 @@ public class ExceptionTest {
 		IStu2Service stu2Service = (IStu2Service)context.getBean("stu2Service");
 		stu2Service.saveStu();
 	}
+	
+	@Test
+	public void testAuthority() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		IStuService stuService = (IStuService)context.getBean("stuService");
+		stuService.login("lee");
+	}
 }

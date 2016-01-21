@@ -9,4 +9,6 @@ public interface IStuDAO {
 	public String deleteStu();
 	
 	public String getStu();
+	
+	public String login(String username);
 }

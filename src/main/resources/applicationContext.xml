@@ -73,4 +73,11 @@
 		</aop:aspect>
 	</aop:config>
 	
+	<aop:config >
+		<aop:pointcut expression="execution(* com.lee.spring002.aop.xml.exception.*ServiceImpl.login(..))" id="performException"/>
+		<aop:aspect ref="exceptionAOP">
+			<aop:before method="authority" pointcut-ref="performException"/>
+		</aop:aspect>
+	</aop:config>
+	
 </beans>

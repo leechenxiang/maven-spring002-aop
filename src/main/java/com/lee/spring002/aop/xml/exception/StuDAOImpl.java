@@ -27,4 +27,9 @@ public class StuDAOImpl implements IStuDAO {
 		return "getStu successfully";
 	}
 
+	@Override
+	public String login(String username) {
+		return  username + "login success";
+	}
+
 }

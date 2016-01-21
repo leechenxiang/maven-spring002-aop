@@ -9,4 +9,6 @@ public interface IStuService {
 	public void deleteStu();
 	
 	public void getStu();
+	
+	public void login(String username);
 }

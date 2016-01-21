@@ -33,4 +33,8 @@ public class StuServiceImpl implements IStuService {
 		this.stuDAO = stuDAO;
 	}
 
+	@Override
+	public void login(String username) {
+		System.out.println(stuDAO.login("lee"));
+	}
 }
