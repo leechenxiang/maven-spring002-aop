@@ -23,6 +23,7 @@
 	
 	<aop:config >
 		<!-- 切入点表达式，作用：确定目标类 -->
+		<!-- spring 会自动检测这个表达式下的类是否是切面，如果是，则不会包含进来 -->
 		<aop:pointcut expression="execution(* com.lee.spring002.aop.xml.PersonDAOImpl.*(..))" id="perform"/>
 		<!-- ref 指向切面 -->
 		<aop:aspect ref="transaction">
@@ -57,6 +58,7 @@
 	</aop:config>
 	
 	
+	
 	<bean id="exceptionAOP" class="com.lee.spring002.aop.xml.exception.ExceptionAOP"></bean>
 	<bean id="stuService" class="com.lee.spring002.aop.xml.exception.StuServiceImpl">
 		<property name="stuDAO" ref="stuDAO"></property>
@@ -80,4 +82,17 @@
 		</aop:aspect>
 	</aop:config>
 	
+	
+	<bean id="timeAOP" class="com.lee.spring002.aop.xml.excutingtime.TimeAOP"></bean>
+	<bean id="departmentService" class="com.lee.spring002.aop.xml.excutingtime.DepartmentServiceImpl">
+		<property name="departmentDAO" ref="departmentDAO"></property>
+	</bean>
+	<bean id="departmentDAO" class="com.lee.spring002.aop.xml.excutingtime.DepartmentDAOImpl"></bean>
+	
+	<aop:config >
+		<aop:pointcut expression="execution(* com.lee.spring002.aop.xml.excutingtime.DepartmentServiceImpl.*(..))" id="performTime"/>
+		<aop:aspect ref="timeAOP">
+			<aop:around method="excutingTime" pointcut-ref="performTime"/>			
+		</aop:aspect>
+	</aop:config>
 </beans>
