@@ -89,7 +89,11 @@
 	</bean>
 	<bean id="departmentDAO" class="com.lee.spring002.aop.xml.excutingtime.DepartmentDAOImpl"></bean>
 	
-	<aop:config >
+	<!-- 
+		proxy-target-class 默认为false
+		如果true的话，那么代理模式肯定为cglib
+	 -->
+	<aop:config proxy-target-class="true">
 		<aop:pointcut expression="execution(* com.lee.spring002.aop.xml.excutingtime.DepartmentServiceImpl.*(..))" id="performTime"/>
 		<aop:aspect ref="timeAOP">
 			<aop:around method="excutingTime" pointcut-ref="performTime"/>			
